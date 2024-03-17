@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kanban-ui
+  labels:
+    app: kanban-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kanban-ui
+  template:
+    metadata:
+      labels:
+        app: kanban-ui
+    spec:
+      containers:
+      - name: kanban-ui-container
+        image: 312bc/kanban-ui:2.0
+        ports:
+        - containerPort: 80

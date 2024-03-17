@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kanban-app
+  labels:
+    app: kanban-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kanban-app
+  template:
+    metadata:
+      labels:
+        app: kanban-app
+    spec:
+      containers:
+      - name: kanban-app-container
+        image: 312bc/kanban-app:2.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_SERVER
+          value: postgres
+        - name: POSTGRES_DB
+          value: kanban
+        - name: POSTGRES_PASSWORD
+          value: kanban
+        - name: POSTGRES_USER
+          value: kanban
