@@ -1,4 +1,8 @@
    24  vi deployment.yaml 
+   скопируй код из файла с этим же именем 
+   вставить 
+   shift+zz
+   и так каждый раз когда будет новый файл 
    25  cat deployment.yaml 
    26  kubectl apply -f deployment.yaml
    27  kubectl get deployments
