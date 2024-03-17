@@ -1,21 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
   name: kanban-ui
-  labels:
-    app: kanban-ui
 spec:
-  replicas: 1
+  type: NodePort
   selector:
-    matchLabels:
-      app: kanban-ui
-  template:
-    metadata:
-      labels:
-        app: kanban-ui
-    spec:
-      containers:
-      - name: kanban-ui-container
-        image: 312bc/kanban-ui:2.0
-        ports:
-        - containerPort: 80
+    app: kanban-ui
+  ports:
+    - port: 80  # This is the port the container accepts traffic on.
+      targetPort: 80  # This is the port inside the container.
+      nodePort: 30001  # This is the port on the node.
